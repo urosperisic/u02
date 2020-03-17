@@ -1,6 +1,6 @@
 package io.u02.service;
 
-import io.u02.model.Book;
+import io.u02.entity.Book;
 import io.u02.repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

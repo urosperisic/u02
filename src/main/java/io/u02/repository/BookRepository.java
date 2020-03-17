@@ -1,6 +1,6 @@
 package io.u02.repository;
 
-import io.u02.model.Book;
+import io.u02.entity.Book;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
