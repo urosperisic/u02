@@ -1,42 +1,22 @@
 package io.u02.service;
 
-import io.u02.entity.Book;
-import io.u02.repository.BookRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import io.u02.entity.BookEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional; // -
+import java.util.Optional;
 
 @Service
-public class BookService {
+public interface BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+    public List<BookEntity> getAllBooks();
 
-    public List<Book> getAllBooks() {
-        List<Book> books = new ArrayList<Book>();
-        bookRepository.findAll()
-                .forEach(books::add);
-        return books;
-    }
+    public Optional<BookEntity> getBook(Long id);
 
-    public Optional<Book> getBook(Long id) {
-        return bookRepository.findById(id); // -
-    }
+    public void addBook(BookEntity book);
 
-    public void addBook(Book book) {
-        bookRepository.save(book);
-    }
+    public void updateBook(Long id, BookEntity book);
 
-    public void updateBook(Long id, Book book) {
-        bookRepository.save(book);
-    }
-
-    public void deleteBook(Long id) {
-        bookRepository.deleteById(id); //-
-    }
+    public void deleteBook(Long id);
 
 }
