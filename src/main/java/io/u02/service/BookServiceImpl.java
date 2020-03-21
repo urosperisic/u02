@@ -1,6 +1,8 @@
 package io.u02.service;
 
 import io.u02.entity.BookEntity;
+import io.u02.mapper.BookMapper;
+import io.u02.model.Book;
 import io.u02.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,9 @@ public class BookServiceImpl implements BookService{
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private BookMapper bm;
+
     public List<BookEntity> getAllBooks() {
         List<BookEntity> books = new ArrayList<BookEntity>();
         bookRepository.findAll()
@@ -25,8 +30,8 @@ public class BookServiceImpl implements BookService{
         return bookRepository.findById(id); // -
     }
 
-    public void addBook(BookEntity book) {
-        bookRepository.save(book);
+    public void addBook(Book book) {
+        bookRepository.save(bm.mapToEntity(book));
     }
 
     public void updateBook(Long id, BookEntity book) {

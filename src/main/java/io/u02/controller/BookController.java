@@ -1,6 +1,7 @@
 package io.u02.controller;
 
 import io.u02.entity.BookEntity;
+import io.u02.model.Book;
 import io.u02.service.BookService;
 
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class BookController {
     }
 
     @RequestMapping(method= RequestMethod.POST, value="/books")
-    public void addBook(@RequestBody BookEntity book) {
+    public void addBook(@RequestBody Book book) {
         bookService.addBook(book);
     }
 
