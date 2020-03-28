@@ -16,9 +16,6 @@ public class BookServiceImpl implements BookService{
     @Autowired
     private BookRepository bookRepository;
 
-    @Autowired
-    private BookMapper bm;
-
     public List<BookEntity> getAllBooks() {
         List<BookEntity> books = new ArrayList<BookEntity>();
         bookRepository.findAll()
@@ -30,13 +27,9 @@ public class BookServiceImpl implements BookService{
         return bookRepository.findById(id); // -
     }
 
-    public void addBook(Book book) {
-        bookRepository.save(bm.mapToEntity(book));
-    }
+    public void addBook(BookEntity book) { bookRepository.save(book); }
 
-    public void updateBook(Long id, BookEntity book) {
-        bookRepository.save(book);
-    }
+    public void updateBook(Long id, BookEntity book) { bookRepository.save(book); }
 
     public void deleteBook(Long id) {
         bookRepository.deleteById(id); //-
