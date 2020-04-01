@@ -10,8 +10,9 @@ import java.net.URL;
 
 @Component
 public class ImageServiceImpl implements ImageService {
+
     @Override
-    public String[] downloadImage() {
+    public String downloadImage() {
 
         File slika = new File("C:\\Users\\u\\Desktop\\a.jpg");
 
@@ -29,13 +30,41 @@ public class ImageServiceImpl implements ImageService {
             bout.close();
             in.close();
             System.out.println("Download Complete!!!");
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
-        File file = new File("C:\\Users\\u\\Desktop");
-        return file.list();
+        return "Download complete";
+
+    }
+
+    @Override
+    public String downloadImage(String s) {
+
+        File dir = new File("C:\\Users\\u\\Desktop\\");
+        File f = new File(dir, s);
+        File slika = new File("C:\\Users\\u\\Desktop\\a.jpg");
+
+        if(f.exists()) {
+            try {
+                BufferedInputStream in = new BufferedInputStream(new FileInputStream(f));
+                FileOutputStream fos = new FileOutputStream(slika);
+                BufferedOutputStream bout = new BufferedOutputStream(fos, 1024);
+                byte[] buffer = new byte[1024];
+                int read = 0;
+                while ((read = in.read(buffer, 0, 1024)) >= 0) {
+                    bout.write(buffer, 0 , read);
+                }
+                bout.close();
+                in.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return "Download file " + s;
+        }
+
+        return "File not found";
+
     }
 
 }
