@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ImageService {
     public String downloadImage();
-    public String downloadImage(String s);
+    public String downloadImage(String fileName);
 }

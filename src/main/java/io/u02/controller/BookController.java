@@ -1,7 +1,6 @@
 package io.u02.controller;
 
 import io.u02.entity.BookEntity;
-import io.u02.model.Book;
 import io.u02.service.BookService;
 
 import org.springframework.web.bind.annotation.*;

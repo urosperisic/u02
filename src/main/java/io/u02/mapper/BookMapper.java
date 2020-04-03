@@ -4,7 +4,6 @@ import io.u02.entity.BookEntity;
 import io.u02.model.Book;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 @Component
