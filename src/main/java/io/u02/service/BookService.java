@@ -14,9 +14,9 @@ public interface BookService {
 
     public Optional<BookEntity> getBook(Long id);
 
-    public void addBook(BookEntity book);
+    public void addBook(Book book);
 
-    public void updateBook(Long id, BookEntity book);
+    public void updateBook(Long id, Book book);
 
     public void deleteBook(Long id);
 
