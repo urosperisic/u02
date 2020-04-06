@@ -1,17 +1,15 @@
 package io.u02.service;
 
 import io.u02.entity.BookEntity;
-import io.u02.mapper.BookMapper;
-import io.u02.model.Book;
 import io.u02.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class BookServiceImpl implements BookService{
     @Autowired
     private BookRepository bookRepository;

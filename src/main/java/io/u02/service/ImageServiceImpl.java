@@ -1,17 +1,16 @@
 package io.u02.service;
 
-
-import org.springframework.stereotype.Component;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ImageServiceImpl implements ImageService {
 
-    Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ImageServiceImpl.class);
 
     @Override
     public String downloadImage() {
@@ -31,9 +30,9 @@ public class ImageServiceImpl implements ImageService {
             }
             bout.close();
             in.close();
-            logger.info("Download complete from URL");
+            LOG.info("Download complete from URL");
         } catch (IOException ex) {
-            ex.printStackTrace();
+            LOG.error("Failed to download image, '{}'", image, ex);
         }
 
         return "Download complete";
@@ -47,7 +46,7 @@ public class ImageServiceImpl implements ImageService {
         File f = new File(dir, fileName);
         File image = new File("C:\\Users\\u\\Desktop\\a.jpg");
 
-        if(f.exists()) {
+        if (f.exists()) {
             try {
                 BufferedInputStream in = new BufferedInputStream(new FileInputStream(f));
                 FileOutputStream fos = new FileOutputStream(image);
@@ -59,9 +58,9 @@ public class ImageServiceImpl implements ImageService {
                 }
                 bout.close();
                 in.close();
-                logger.info("Download complete from local");
+                LOG.info("Download complete from local");
             } catch (IOException ex) {
-                ex.printStackTrace();
+                LOG.error("Failed to download image, '{}'", image, ex);
             }
             return "Download file " + fileName;
         }

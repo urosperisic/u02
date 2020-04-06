@@ -14,9 +14,13 @@ public class ImageController {
     private ImageService imageService;
 
     @RequestMapping("/download")
-    public String request() { return imageService.downloadImage(); }
+    public String request() {
+        return imageService.downloadImage();
+    }
 
     @RequestMapping("/{fileName}")
-    public String request(@PathVariable("fileName") String fName) { return imageService.downloadImage(fName); }
+    public String request(@PathVariable("fileName") String fName) {
+        return imageService.downloadImage(fName);
+    }
 
 }
