@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Mapper(componentModel ="spring")
@@ -15,4 +16,5 @@ public interface BookMapper {
     List<BookEntity> mapToEntity(List<Book> books);
     Book mapToModel(BookEntity entity);
     List<Book> mapToModel(List<BookEntity> entities);
+    Book mapToModel(Optional<BookEntity> entity);
 }

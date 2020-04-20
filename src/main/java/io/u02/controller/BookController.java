@@ -1,6 +1,5 @@
 package io.u02.controller;
 
-import io.u02.entity.BookEntity;
 import io.u02.model.Book;
 import io.u02.service.BookService;
 
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class BookController {
@@ -17,12 +15,12 @@ public class BookController {
     private BookService bookService;
 
     @RequestMapping("/books")
-    public List<BookEntity> getAllBooks() {
+    public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
     @RequestMapping("/books/{id}")
-    public Optional<BookEntity> getBook(@PathVariable Long id) {
+    public Book getBook(@PathVariable Long id) {
         return bookService.getBook(id);
     }
 

@@ -19,15 +19,18 @@ public class BookServiceImpl implements BookService{
     @Autowired
     BookMapper bookMapper;
 
-    public List<BookEntity> getAllBooks() {
+    public List<Book> getAllBooks() {
         List<BookEntity> books = new ArrayList<BookEntity>();
         bookRepository.findAll()
                 .forEach(books::add);
-        return books;
+        List<Book> books1 = bookMapper.mapToModel(books);
+        return books1;
     }
 
-    public Optional<BookEntity> getBook(Long id) {
-        return bookRepository.findById(id); // -
+    public Book getBook(Long id) {
+        Optional<BookEntity> book = bookRepository.findById(id);
+        Book book1 = bookMapper.mapToModel(book);
+        return book1;
     }
 
     public void addBook(Book book) {
@@ -39,7 +42,7 @@ public class BookServiceImpl implements BookService{
         bookRepository.save(bookEntity); }
 
     public void deleteBook(Long id) {
-        bookRepository.deleteById(id); //-
+        bookRepository.deleteById(id);
     }
 
 }

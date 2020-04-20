@@ -1,18 +1,15 @@
 package io.u02.service;
 
-import io.u02.entity.BookEntity;
 import io.u02.model.Book;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface BookService {
 
-    public List<BookEntity> getAllBooks();
+    public List<Book> getAllBooks();
 
-    public Optional<BookEntity> getBook(Long id);
+    public Book getBook(Long id);
 
     public void addBook(Book book);
 
